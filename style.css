@@ -1,0 +1,228 @@
+/* ===== Layout dos cards ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ===== Estilo dos cards ===== */
+.game-card {
+    position: relative;
+    display: block;
+    aspect-ratio: 3 / 4;
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    background: linear-gradient(160deg, #00509d, #001d3d);
+    border: 1px solid rgba(255, 213, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+}
+
+.game-card:hover {
+    border-color: rgba(255, 213, 0, 0.9);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 213, 0, 0.25);
+}
+
+.game-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateZ(0) scale(1.02);
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: saturate(0.9) brightness(0.85);
+}
+
+.game-card:hover img {
+    transform: scale(1.12);
+    filter: saturate(1.1) brightness(0.55);
+}
+
+/* Brilho que varre o card */
+.game-card-shine {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 213, 0, 0.35), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+.game-card:hover .game-card-shine {
+    opacity: 1;
+}
+
+/* Selo/tag no canto do card */
+.game-card-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    background: rgba(0, 31, 63, 0.75);
+    border: 1px solid rgba(255, 213, 0, 0.5);
+    color: #ffd500;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+/* ===== Navegação ===== */
+nav {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 30, 61, 0.8);
+    border-bottom: 1px solid rgba(255, 213, 0, 0.2);
+}
+
+nav a {
+    display: inline-block;
+    margin: 8px 12px;
+    color: #ffd500;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    position: relative;
+    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), color 0.25s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: #ffd500;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+
+nav a:hover {
+    color: #fff;
+}
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* ===== Efeitos gerais ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #001d3d, #003366);
+    min-height: 100vh;
+    animation: fx-page-in 0.8s ease both;
+}
+
+@keyframes fx-page-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Grão de fundo animado */
+#fx-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: fx-grain-move 0.5s steps(4) infinite;
+}
+@keyframes fx-grain-move {
+    0%   { transform: translate(0,0); }
+    25%  { transform: translate(-2%,-1%); }
+    50%  { transform: translate(1%,2%); }
+    75%  { transform: translate(-1%,1%); }
+    100% { transform: translate(0,0); }
+}
+
+/* Cursor customizado */
+#fx-cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    background: radial-gradient(circle, rgba(255,213,0,0.18) 0%, rgba(253,197,0,0.08) 35%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+#fx-cursor-glow.fx-active { opacity: 1; }
+
+#fx-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffd500;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 0 12px 2px rgba(255,213,0,0.6);
+}
+#fx-cursor-dot.fx-active { opacity: 1; }
+#fx-cursor-dot.fx-hover {
+    width: 34px;
+    height: 34px;
+    background: rgba(255,213,0,0.15);
+    border: 1px solid #ffd500;
+    box-shadow: 0 0 20px 4px rgba(255,213,0,0.35);
+}
+
+/* Esconde cursor em telas de toque */
+@media (hover: none), (pointer: coarse) {
+    #fx-cursor-glow, #fx-cursor-dot { display: none; }
+}
+
+/* Revelação ao rolar */
+.fx-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    will-change: opacity, transform;
+}
+.fx-reveal.fx-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Parallax nas imagens */
+.fx-parallax {
+    will-change: transform;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    nav a {
+        display: block;
+        margin: 4px auto;
+        max-width: 200px;
+    }
+}
