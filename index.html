@@ -1,69 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width", initial-scale="1.0">
-     <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="acao.js" defer></script>
     <link rel="stylesheet" href="style.css">
-
-
-    <title> Comidas Típicas Nordestina </title>
-
-
-
-
+    <title>Comidas Típicas Nordestinas</title>
+    <style>
+      /* Garante que o footer fique sempre no fim da página */
+      html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .container.py-4 {
+        flex: 1; /* Faz o conteúdo ocupar o espaço disponível */
+      }
+      footer {
+        background-color: #212529;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        margin-top: auto; /* Empurra o footer para baixo */
+        font-size: 0.95rem;
+      }
+    </style>
 </head>
-
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-        <!-- Logo alterado para o tema -->
-        <a class="navbar-brand" href="index.html">
-            🍛 Sabores de Pernambuco
-        </a>
-        <div class="navbar-nav">
-            <a class="nav-link" href="index.html">
-                Início
-            </a>
-            <a class="nav-link active" href="#comidas">
-                Comidas Típicas
-            </a>
-            <a class="nav-link" href="sobre.html">
-                Sobre
-            </a>
+<div class="container py-4">
+  <div class="row g-4">
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="comida1.html" class="card h-100 text-decoration-none text-dark border-0 shadow-sm">
+        <img src="imagens/buchada-de-bode-tradicional-com-miudos.webp" class="card-img-top" alt="Buchada">
+        <div class="card-body p-2 text-center">
+          <span class="fw-medium">Buchada de Bode</span>
         </div>
+      </a>
     </div>
-</nav>
-
-
-<div class="card-grid">
-    <a href="#comida1" class="game-card">
-    <img src="imagens/buchada-de-bode-tradicional-com-miudos.webp" alt="buchada">
-    <span class="game-card-tag"> Buchada de bode</span>
-    </a>
-
-    <a href="#comida2" class="game-card">
-    <img src="imagens/tapioca.webp" alt="Tapioca">
-    <span class="game-card-tag">Tapioca</span>
-    </a>
-    <a href="#comida3" class="game-card">
-    <img src="imagens/baiaodedois.jpg" alt="Baiao de dois">
-    <span class="game-card-tag">Baião de dois</span>
-    </a>
-    <a href="#comida4" class="game-card">
-        <img src="imagens/carne de sol.jpg" alt="Carne de sol">
-        <span class="game-card-tag">Carne de Sol</span>
-    </a>
-    <a href="#comida5" class="game-card">
-        <img src="imagens/Bolo-de-Rolo-de-Pernambuco.webp" alt="Bolo de rolo">
-        <span class="game-card-tag">Bolo de Rolo</span>
-    </a>
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="comida2.html" class="card h-100 text-decoration-none text-dark border-0 shadow-sm">
+        <img src="imagens/tapioca.webp" class="card-img-top" alt="Tapioca">
+        <div class="card-body p-2 text-center">
+          <span class="fw-medium">Tapioca</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="comida3.html" class="card h-100 text-decoration-none text-dark border-0 shadow-sm">
+        <img src="imagens/baiaodedois.jpg" class="card-img-top" alt="Baião de Dois">
+        <div class="card-body p-2 text-center">
+          <span class="fw-medium">Baião de Dois</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="comida4.html" class="card h-100 text-decoration-none text-dark border-0 shadow-sm">
+        <img src="imagens/carne de sol.jpg" class="card-img-top" alt="Carne de Sol">
+        <div class="card-body p-2 text-center">
+          <span class="fw-medium">Carne de Sol</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <a href="comida5.html" class="card h-100 text-decoration-none text-dark border-0 shadow-sm">
+        <img src="imagens/Bolo-de-Rolo-de-Pernambuco.webp" class="card-img-top" alt="Bolo de Rolo">
+        <div class="card-body p-2 text-center">
+          <span class="fw-medium">Bolo de Rolo</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
-</body>
 
+<footer>
+    Site de comidas típicas Nordestinas, feito por Pedro Philipe. 2026 &copy; Todos os direitos reservados.
+</footer>
+
+</body>
 </html>
