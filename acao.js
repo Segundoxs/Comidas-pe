@@ -96,32 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.15 });
 
-    sections.forEach(sec => observer.observe(sec));
-
-    // Efeito magnético nos links de navegação
-    const magnetics = document.querySelectorAll("nav a");
-    magnetics.forEach(el => {
-        el.addEventListener("mousemove", (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
-        });
-        el.addEventListener("mouseleave", () => {
-            el.style.transform = "translate(0,0)";
-        });
-    });
-
-    // Parallax leve nas imagens
-    const images = document.querySelectorAll("img");
-    images.forEach(img => img.classList.add("fx-parallax"));
-
-    window.addEventListener("scroll", () => {
-        const scrolled = window.scrollY;
-        images.forEach(img => {
-            const speed = 0.05;
-            img.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-
+  
+});
+// ===== ANIMAÇÃO DE ENTRADA DA PÁGINA =====
+document.addEventListener('DOMContentLoaded', function () {
+  const card = document.querySelector('.card.h-100');
+  if (card) {
+    // Animação suave ao abrir a página
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(25px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 150);
+  }
 });
